@@ -7,6 +7,7 @@ import Home from './components/home';
 import Equation from './components/calc';
 import Reps from './components/repos';
 import RepoDescription from './components/repoDescription';
+import Favourites from './components/favourites';
 
 ReactDOM.render(
   <Router>
@@ -17,6 +18,7 @@ ReactDOM.render(
             <NavigationLink value="Home" link="/"/>
             <NavigationLink value="Calculator" link="/calc"/>
             <NavigationLink value="Repositories" link="/reps"/>
+            <NavigationLink value="Favourites" link="/favourites"/>
             <li className="icon" onClick={() => window.responsiveNavigation()}><a href="javascript:void(0);">&#9776;</a></li>
         </ul>
       </div>
@@ -25,6 +27,7 @@ ReactDOM.render(
         <Route path="/" exact component={Home} />
         <Route path="/calc" component={Equation} />
         <Route path="/reps" exact component={Reps}/>
+        <Route path="/favourites" component={Favourites}/>
         <Route path="/reps/:username/:repo" component={RepoDescription}/>
       </Switch>
     </div>

@@ -27,3 +27,11 @@
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+.colored{
+    color: #E8AA37;
+}
+
+.fa-star:hover {
+    color: #E8AA37;
+}

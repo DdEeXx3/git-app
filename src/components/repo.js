@@ -3,6 +3,78 @@ import {Link} from "react-router-dom";
 
 class Repo extends React.Component
 {
+    constructor(props){
+        super(props);
+        this.state = {
+            favourite: false,
+            starColor: ""
+        }
+    }
+
+    componentDidMount() {
+        this.checkFavourites();
+    }
+
+    addToFavourites()
+    {
+        if (!this.state.favourite) {
+            this.setState({
+                favourite: true,
+                starColor: "colored"
+            });
+            fetch("http://localhost:3004/favourites", {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                id: this.props.repo.id,
+                name: this.props.repo.name,
+                description: this.props.repo.description,
+                owner: {
+                    login: this.props.repo.owner.login,
+                    avatar_url: this.props.repo.owner.avatar_url
+                },
+                language: this.props.repo.language,
+                public: this.props.repo.private,
+                githubLink: this.props.repo.html_url,
+                homepage: this.props.repo.homepage,
+            })
+        })
+        }
+        else {
+            setTimeout(() => this.props.onUncheck(this.props.repo.id), 400);
+            this.setState({
+                favourite: false,
+                starColor: ""
+            });
+            fetch("http://localhost:3004/favourites/" + this.props.repo.id, {
+            method: 'DELETE',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                id: this.props.repo.id,
+            })
+        })
+        }
+    }
+
+    checkFavourites()
+    {
+        const favList = this.props.fav;
+        for (let i=0; i<favList.length; i++){    
+            if (favList[i] == this.props.repo.id) {
+                this.setState({
+                    favourite: true,
+                    starColor: "colored"
+                })
+            }
+        }
+    }
+
     render(){
         const repo = this.props.repo;
         return(
@@ -31,6 +103,8 @@ class Repo extends React.Component
                 <div className="col-lg-2 col-md-2 col-sm-2"></div>
                 <div className="padding-bottom-10px col-lg-8 col-md-8 col-sm-8"><a className="small a-link" href={repo.homepage}>Visit homepage ></a></div>
                 <div className="col-lg-2 col-md-2 col-sm-2"></div>
+                <div className="paddin-10px col-lg-10 col-md-10 col-sm-10"></div>
+                <div className="padding-10px col-lg-2 col-md-2 col-sm-2"><i className={this.state.starColor + " button button-hover-opacity medium fa fa-star"} onClick={() => this.addToFavourites()}></i></div>
             </div>
         )
     }
