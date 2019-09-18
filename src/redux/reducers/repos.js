@@ -1,4 +1,4 @@
-const repos = {reps: [], favReps: [], errorMessage: '', loading: true, category: 'All', search: '', currentRepo: '', favourites: [], favChecked: false, param: 'q=language:'};
+const repos = {reps: [], favReps: [], myReps: [], errorMessage: '', loading: true, category: 'All', search: '', currentRepo: '', favourites: [], favChecked: false, param: 'q=language:'};
 
 const reposReducer = (state = repos, action) => {
     switch(action.type) {
@@ -13,6 +13,12 @@ const reposReducer = (state = repos, action) => {
         case 'FETCH_DATA_2_SUCCESS':
             return Object.assign({}, state, {loading: false, reps: populateFav(action.response, state.favourites)})
         case 'FETCH_DATA_2_FAILURE':
+            return Object.assign({}, state, {loading: false, errorMessage: action.error})
+        case 'FETCH_DATA_3_REQUEST':
+            return Object.assign({}, state)
+        case 'FETCH_DATA_3_SUCCESS':
+            return Object.assign({}, state, {loading: false, reps: action.response, myReps: action.response})
+        case 'FETCH_DATA_3_FAILURE':
             return Object.assign({}, state, {loading: false, errorMessage: action.error})
         case 'HANDLE_SEARCH':
             return Object.assign({}, state, {errorMessage: '', search: action.value, reps: [], loading: true, param: createSearchQueryParam(state.category, action.value)})

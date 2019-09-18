@@ -129,7 +129,7 @@ class Repo extends React.Component
             <div key={repo.id} className="container button-small-radius margin-10percent text-center shadow width-80percent col-lg-4 col-md-6 col-sm-12">
                 <div className="margin-top-auto margin-bottom-auto padding-10percent col-lg-6 col-md-6 col-sm-6"><h4 className="bold"><Link className="a-secondary" to={"/reps/" + repo.owner.login + "/" + repo.name}>{repo.name}</Link></h4></div>
                 <div className="margin-top-auto margin-bottom-auto padding-10percent col-lg-6 col-md-6 col-sm-6"><img className="button-oval width-50percent" src={repo.owner.avatar_url}></img></div>
-                <div className="line width-80percent text-center col-lg-12 col-md-12 col-sm-12 padding-top-10px"></div>
+                <div className="line width-80percent margin-left-10percent margin-right-10percent text-center col-lg-12 col-md-12 col-sm-12 padding-top-10px"></div>
                 <div className="col-lg-1 col-md-1 col-sm-1"></div>
                 <div className="col-lg-10 col-md-10 col-sm-10"><h5>{repo.description}</h5></div>
                 <div className="col-lg-1 col-md-1 col-sm-1"></div>

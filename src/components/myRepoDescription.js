@@ -1,6 +1,6 @@
 import React from 'react';
 
-class RepoDescription extends React.Component
+class MyRepoDescription extends React.Component
 {
 
     constructor(props) {
@@ -14,12 +14,11 @@ class RepoDescription extends React.Component
         let link = window.location.pathname.split('/');
         console.log(link);
         let repoName = link[link.length - 1];
-        let userName = link[link.length - 2];
-        fetch("https://api.github.com/search/repositories?q=" + repoName + " in:name" + "+user:" + userName)
+        fetch("http://localhost:3005/my_repos?q=" + repoName)
         .then(resp => {
             resp.json().then((json)=> {
                 this.setState({
-                    currentRepo: json.items[0],
+                    currentRepo: json[0],
                     loading: false,
                 })
             });
@@ -67,4 +66,4 @@ class RepoDescription extends React.Component
     }
 }
 
-export default RepoDescription;
+export default MyRepoDescription;

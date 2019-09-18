@@ -38,6 +38,26 @@ export const errorFetchData2 = (error) => {
     }
 }
 
+export const fetchData3 = () => {
+    return {
+        type: 'FETCH_DATA_3_REQUEST',
+    }
+}
+
+export const successFetchData3 = (response) => {
+    return {
+        type: 'FETCH_DATA_3_SUCCESS',
+        response
+    }
+}
+
+export const errorFetchData3 = (error) => {
+    return {
+        type: 'FETCH_DATA_3_FAILURE',
+        error
+    }
+}
+
 const fetchFavourites = (favourites, favouritesState) => {
     return {
         type: 'CREATE_FAVOURITES',
@@ -235,4 +255,28 @@ export const showFavourites = (param) => {
         })
     }
 };
+
+export const showMyRepos = () => {
+    return dispatch => {
+        dispatch(fetchData3());
+        fetch("http://localhost:3005/my_repos")
+        .then(resp => {
+            resp.json().then((json) => {
+                if (json.message) {
+                    dispatch(errorFetchData3(json.message));
+                }
+                else if (json.length === 0) {
+                    dispatch(errorFetchData3("Nothing found :("));
+                }
+                else {
+                    dispatch(successFetchData3(json));
+                }
+                return json;
+            })
+            .catch(error => {
+                console.log(error);
+            })
+        })
+    }
+}
 
