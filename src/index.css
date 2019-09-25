@@ -1,13 +1,172 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.shadow {
+    -webkit-box-shadow: 0px 0px 6px 0px #425664;
+    -moz-box-shadow: 0px 0px 6px 0px #425664;
+    box-shadow: 0px 0px 6px 0px #425664;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+.line {
+    border-top: 2px solid #C6AD8F;
+}
+
+.loader {
+    border: 16px solid #F6F4F2;
+    border-radius: 50%;
+    border-top: 16px solid #0070c9;
+    width: 60px;
+    height: 60px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+
+    @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+
+    @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.colored{
+    color: #E8AA37;
+}
+
+.fa-star:hover {
+    color: #E8AA37;
+}
+
+.fa-trash:hover {
+    color: #A83E3E;
+}
+
+.hide-button {
+    display: none;
+}
+
+.show-button {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.swal2-icon.swal2-success {
+    border-color: #3DA557 !important;
+}
+
+.fa-sort-up {
+    transition:1.5s; /* Transition duration */
+}
+.transition {
+    -o-transform:rotate(180deg);
+    -ms-transform:rotate(180deg);
+    -moz-transform:rotate(180deg);
+    -webkit-transform:rotate(180deg);
+    transform:rotate(180deg); /* How many times it'll rotate = degrees÷360 */
+}
+
+.image-effect {
+    opacity: 0.8;
+    -webkit-box-shadow: 0px 0px 7px #C6AD8F;
+    box-shadow: 0px 0px 7px #C6AD8F;
+}
+
+.flex {
+    display: flex;
+}
+
+.deadline-container-success {
+    color: #3DA557;
+}
+.deadline-container-warning {
+    color: #DD9819;
+}
+.deadline-container-error {
+    color: #A83E3E;
+}
+
+.delete-task:hover {
+    color: #A83E3E;
+}
+
+.done-task:hover {
+    color: #3DA557;
+}
+
+.done {
+    background-color: #d5efdc;
+    opacity: 0.5;
+}
+
+.cross {
+    text-decoration: line-through;
+}
+
+.done-task-colored {
+    color: #3DA557;
+}
+
+.container-invisible {
+    display: none;
+}
+
+/*SWITCH CHECKBOX */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 23px;
+}
+  
+.switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+  
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+  
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 3px;
+    bottom: 2px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+  
+input:checked + .slider {
+    background-color: #0070c9;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #0070c9;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(14px);
+    -ms-transform: translateX(14px);
+    transform: translateX(14px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 23px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
 }
