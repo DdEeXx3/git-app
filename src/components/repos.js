@@ -272,7 +272,10 @@ class Reps extends React.Component
                     See Favourites only:
                 </div>
                 <div className="col-lg-4 col-md-4 col-sm-4">
-                    <input type="checkbox" className="input-style1-secondary" onChange={() => this.props.handleFavourites()}></input>
+                    <label className="switch">
+                        <input type="checkbox" onChange={() => this.props.handleFavourites()}></input>
+                        <span className="slider round"></span>
+                    </label>
                 </div>
                 <div className="col-lg-2 col-md-2 col-sm-1"></div>
                 {this.props.repos.loading && (<div className="col-lg-12 col-md-12 col-sm-12 padding-top-50px padding-bottom-50px">LOADING DATA<div className="loader text-center"></div></div>)}
